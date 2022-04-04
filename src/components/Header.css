@@ -1,0 +1,8 @@
+.header-nav{
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: o.5rem 0.9rem;
+    color: aliceblue;
+}
