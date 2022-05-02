@@ -6,6 +6,9 @@ import { useState } from 'react'
 import UsandoChildren from './estudo/UsandoChildren';
 import UsandoIcons from './estudo/UsandoIcons';
 import APIIntegration from './estudo/APIIntegration';
+import { Routes, Route } from "react-router-dom";
+import Menu from './estudo/Menu';
+import NotFound from './pages/NotFound'
 
 function App() {
 
@@ -40,8 +43,29 @@ function App() {
         setCurrentLanguage
       ]}>
       <div className="App">
-        <UsandoProps />
-        <AddImage nome="Renan"/>
+        <Menu />
+        <Routes>
+          <Route path="/" element={<ExemploContexto/>} />
+          <Route path="images" element={<AddImage nome="Renan"/>} />
+          <Route path="api-integration" element={<APIIntegration />} />
+          <Route path="props" element={<UsandoProps />} />
+          <Route path="children" element={ 
+            <UsandoChildren value={10}>
+              <h1>Usei o Children</h1>
+            </UsandoChildren>
+          } />
+          <Route path="images/icon" element={<UsandoIcons />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
+    </LangContext.Provider>
+  );
+}
+
+export default App;
+
+/* <UsandoProps />
+        
         <ExemploContexto/>
         <UsandoChildren value={10}>
           <h1>Usei o Children</h1>
@@ -51,10 +75,4 @@ function App() {
           <p>Bla bla bla</p>
           <UsandoIcons />
         </UsandoChildren>
-        <APIIntegration />
-      </div>
-    </LangContext.Provider>
-  );
-}
-
-export default App;
+        <APIIntegration />*/
